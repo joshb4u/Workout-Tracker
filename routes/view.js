@@ -6,7 +6,7 @@ router.get("/exercise", function(req, res) {
 });
 
 router.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/index.js"));
+	res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 router.get("/stats", function(req, res) {
