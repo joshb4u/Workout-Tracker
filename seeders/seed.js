@@ -2,8 +2,8 @@ let mongoose = require("mongoose");
 let db = require("../models");
 
 mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
+useNewUrlParser: true,
+useFindAndModify: false
 });
 
 let workoutSeed = [
@@ -127,21 +127,32 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Bench",
-        duration: 30,
-        distance: 2
+        name: "Bench Press",
+        duration: 20,
+        weight: 300,
+        reps: 10,
+        sets: 4
       }
     ]
   }
 ];
 
 db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
+.then(() => db.Workout.collection.insertMany(workoutSeed))
+.then(data => {
+  console.log(data)
+  console.log(data.result.n + " records inserted!");
+})
+.then(()=>{
+  // after instert into db, use custom method to populate all the total duration
+  db.Workout.find({}, function(err, arr){
+    arr.forEach( async workoutDoc => {
+      await workoutDoc.setTotalDuration()
+      await workoutDoc.save()
+    });
   });
+})
+.catch(err => {
+  console.error(err);
+  process.exit(1);
+});
