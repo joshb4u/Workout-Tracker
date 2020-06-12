@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const dB = mongoose.dB
-const workoutdB = new dB(
+const Schema = mongoose.Schema
+const workoutSchema = new Schema(
     {
         day:{
             type: Date,
@@ -43,10 +43,10 @@ const workoutdB = new dB(
         }
     }
 )
-workoutdB.virtual('totalDuration').get(function(){
+workoutSchema.virtual('totalDuration').get(function(){
     return this.exercises.reduce((total, exercise)=>{
         return total+exercise.duration
     },0)
 })
-const Workout = mongoose.model('Workout', workoutdB)
+const Workout = mongoose.model('Workout', workoutSchema)
 module.exports = Workout
