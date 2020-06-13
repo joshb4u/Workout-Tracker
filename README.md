@@ -8,6 +8,8 @@
 ## Table of Contents
 
 * [Description](#description)
+* [Technologies Used](#technologies-used)
+* [User Story](#user-story)
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#licence)
@@ -17,8 +19,20 @@
 
 ## Description
 
+A web based application called workout tracker is created here using Mongo database along with a Mongoose schema. This application provides a tracking platform that allows users to add workouts to a plan and view their progress in a dashboard. The application is set up in such a way that the users can log multiple exercises in a workout on a given day. The users can enter the name, type, weight, sets, reps, distance and duration of their exercise. The users can also view the combined weight of their multiple exercises and workouts on the dashboard.
 
+## Technologies Used
 
+* Express
+* Node.js
+* MongoDB
+* Mongoose
+
+## User Story
+
+```
+As A user, I want to be able to view, create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+```
 
 ## Installation
 
